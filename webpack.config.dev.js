@@ -30,6 +30,7 @@ module.exports = {
       'rxjs',
       'event-source-polyfill',
       './app/index.js',
+      './app/index.scss'
     ],
   },
   output: {
