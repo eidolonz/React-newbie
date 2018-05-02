@@ -4,19 +4,19 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
-const PORT = 3010
+const PORT = 3000
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.resolve(__dirname, 'app', 'index.html'),
   filename: './index.html',
 })
 
-const copyPlugin = new CopyWebpackPlugin([
-  {
-    from: path.resolve(__dirname, 'app', 'static'),
-    to: path.resolve(__dirname, 'dev', 'static')
-  }
-])
+// const copyPlugin = new CopyWebpackPlugin([
+//   {
+//     from: path.resolve(__dirname, 'app', 'static'),
+//     to: path.resolve(__dirname, 'dev', 'static')
+//   }
+// ])
 
 const cssExtractPlugin = new MiniCssExtractPlugin({
   filename: '[name].css',
@@ -29,8 +29,7 @@ module.exports = {
       'babel-polyfill',
       'rxjs',
       'event-source-polyfill',
-      './app/js/index.js',
-      './app/style.scss',
+      './app/index.js',
     ],
   },
   output: {
@@ -81,7 +80,7 @@ module.exports = {
   },
   plugins: [
     htmlPlugin,
-    copyPlugin,
+    // copyPlugin,
     cssExtractPlugin,
     new webpack.HotModuleReplacementPlugin(),
   ],
