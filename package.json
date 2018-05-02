@@ -9,6 +9,8 @@
   "devDependencies": {
     "react-scripts": "1.1.4"
   },
+  "author": "Piyawat C.",
+  "license": "ISC",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
