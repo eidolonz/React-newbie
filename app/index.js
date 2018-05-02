@@ -1,19 +1,30 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './index.css';
-import App from './App';
+import { Provider } from 'react-redux'
+import App from './App'
+import configureStore from './store/configureStore'
+import './index.scss'
+
 // import registerServiceWorker from './registerServiceWorker';
+const store = configureStore()
 const rootEl = document.getElementById('app')
 
 const renderApp = (Component) => {
-  console.log('KKKKKKKKKKKKKKKKKKKKKKK', Component, document.getElementById('app'));
   render(
-    <Component />
+    <Provider store={store}>
+      <Component />
+    </Provider >
     ,
     rootEl
   )
 }
 
 renderApp(App)
-// ReactDOM.render(<App />, document.getElementById('app'));
-// registerServiceWorker();
+
+if (module.hot) {
+  module.hot.accept('./Root', () => {
+    const NextRoot = require('./Root').default // eslint-disable-line global-require
+    renderApp(NextRoot)
+  })
+}
+ // registerServiceWorker();
