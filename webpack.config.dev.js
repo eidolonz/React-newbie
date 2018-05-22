@@ -7,8 +7,8 @@ const path = require('path')
 const PORT = 8088
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: path.resolve(__dirname, 'app', 'index.html'),
-  filename: './index.html',
+  template: path.resolve(__dirname, 'app', 'app.html'),
+  filename: './app.html',
 })
 
 // const copyPlugin = new CopyWebpackPlugin([

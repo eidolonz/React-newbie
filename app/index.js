@@ -6,7 +6,6 @@ import App from './App';
 const rootEl = document.getElementById('app')
 
 const renderApp = (Component) => {
-  console.log('KKKKKKKKKKKKKKKKKKKKKKK', Component, document.getElementById('app'));
   render(
     <Component />
     ,
