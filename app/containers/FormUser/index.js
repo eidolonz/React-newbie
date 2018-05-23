@@ -5,7 +5,7 @@ import { Row, Col, Button } from 'react-bootstrap'
 import { Form } from '../../components'
 import './index.scss'
 
-class FormOrder extends Component {
+class FormUser extends Component {
 
   getUserName() {
     return (
@@ -80,4 +80,4 @@ class FormOrder extends Component {
 
 }
 
-export default FormOrder
+export default FormUser
