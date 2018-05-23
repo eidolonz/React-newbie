@@ -11,12 +11,17 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: './index.html',
 })
 
-const copyPlugin = new CopyWebpackPlugin([
-  {
-    from: path.resolve(__dirname, 'app'),
-    to: path.resolve(__dirname, 'dev')
-  }
-])
+const html1Plugin = new HtmlWebPackPlugin({
+  template: path.resolve(__dirname, 'app', 'index.html'),
+  filename: './index.html',
+})
+
+// const copyPlugin = new CopyWebpackPlugin([
+//   {
+//     from: path.resolve(__dirname, 'app', 'static'),
+//     to: path.resolve(__dirname, 'dev', 'static')
+//   }
+// ])
 
 const cssExtractPlugin = new MiniCssExtractPlugin({
   filename: '[name].css',
@@ -80,7 +85,8 @@ module.exports = {
   },
   plugins: [
     htmlPlugin,
-    copyPlugin,
+    html1Plugin,
+    // copyPlugin,
     cssExtractPlugin,
     new webpack.HotModuleReplacementPlugin(),
   ],

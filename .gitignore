@@ -6,7 +6,7 @@
 .cache
 .history
 .lib/
-dist/*
+dev/*
 target/
 lib_managed/
 src_managed/
