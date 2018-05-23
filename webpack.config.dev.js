@@ -11,6 +11,11 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: './app.html',
 })
 
+const html1Plugin = new HtmlWebPackPlugin({
+  template: path.resolve(__dirname, 'app', 'index.html'),
+  filename: './index.html',
+})
+
 // const copyPlugin = new CopyWebpackPlugin([
 //   {
 //     from: path.resolve(__dirname, 'app', 'static'),
@@ -81,6 +86,7 @@ module.exports = {
   },
   plugins: [
     htmlPlugin,
+    html1Plugin,
     // copyPlugin,
     cssExtractPlugin,
     new webpack.HotModuleReplacementPlugin(),
