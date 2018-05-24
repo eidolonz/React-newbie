@@ -2,16 +2,6 @@
 *.class
 *.log
 
-#electron
-release/
-dll/
-app/main.prod.js
-app/main.prod.js.map
-.cache--happypack/
-app/dist-intermediate
-app/web-dist
-app/web-build
-
 # sbt specific
 .cache
 .history

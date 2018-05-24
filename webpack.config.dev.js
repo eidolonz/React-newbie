@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
-const PORT = 3000
+const PORT = 8088
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.resolve(__dirname, 'app', 'index.html'),
