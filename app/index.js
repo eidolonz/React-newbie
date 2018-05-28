@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { CookiesProvider } from 'react-cookie'
 import App from './App'
 import configureStore from './store/configureStore'
 import './index.scss'
@@ -12,7 +13,9 @@ const rootEl = document.getElementById('app')
 const renderApp = (Component) => {
   render(
     <Provider store={store}>
-      <Component />
+      <CookiesProvider>
+        <Component />
+      </CookiesProvider>
     </Provider >
     ,
     rootEl
@@ -27,4 +30,3 @@ if (module.hot) {
     renderApp(NextRoot)
   })
 }
- // registerServiceWorker();

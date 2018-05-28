@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.4",
@@ -12,15 +10,20 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "copy-webpack-plugin": "^4.5.1",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "moment-timezone": "^0.5.14",
     "node-sass": "^4.8.3",
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-cookie": "^2.1.6",
+    "react-dom": "^16.3.2",
+    "react-facebook-login": "^4.0.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "webpack": "^4.2.0",
     "webpack-cli": "^2.0.12",
-    "webpack-dev-server": "^3.1.1",
-    "lodash": "^4.17.5",
-    "moment": "^2.21.0",
-    "moment-timezone": "^0.5.14"
+    "webpack-dev-server": "^3.1.1"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
@@ -55,8 +58,6 @@
   "license": "ISC",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.dev.js",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "deploy": "npm run clean && webpack --mode production --config webpack.config.prod.js",
     "deploy:dev": "npm run clean:dev && webpack --mode development --config webpack.config.dev.js",
     "clean": "rimraf public/*",
