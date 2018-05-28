@@ -4,23 +4,33 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
-const htmlPlugin = new HtmlWebPackPlugin({
-  template: path.resolve(__dirname, 'app', 'index.html'),
-  filename: './index.html',
-})
+const indexPage = new HtmlWebPackPlugin(
+  {
+    template: path.resolve(__dirname, 'app', 'index.html'),
+    filename: './index.html',
+  }
+)
 
-const html1Plugin = new HtmlWebPackPlugin({
+const formPage = new HtmlWebPackPlugin({
   template: path.resolve(__dirname, 'app', 'app.html'),
   filename: './app.html',
+  extraFiles: {
+    css: path.resolve(__dirname, 'app', 'bootstrap')
+  }
 })
 
 
 const copyPlugin = new CopyWebpackPlugin([
   {
-    from: path.resolve(__dirname, 'app'),
-    to: path.resolve(__dirname, 'public')
+    from: path.resolve(__dirname, 'app', 'asset'),
+    to: path.resolve(__dirname, 'public', 'asset')
+  },
+  {
+    from: path.resolve(__dirname, 'app', 'bootstrap'),
+    to: path.resolve(__dirname, 'public', 'bootstrap')
   }
 ])
+
 
 const cssExtractPlugin = new MiniCssExtractPlugin({
   filename: '[name].css',
@@ -35,6 +45,7 @@ module.exports = {
       'event-source-polyfill',
       './app/index.js',
       './app/index.scss',
+      './app/bootstrap/css/bootstrap.min.css',
     ],
   },
   output: {
@@ -79,8 +90,8 @@ module.exports = {
     }
   },
   plugins: [
-    htmlPlugin,
-    html1Plugin,
+    indexPage,
+    formPage,
     copyPlugin,
     cssExtractPlugin,
   ],
