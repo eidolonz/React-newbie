@@ -9,10 +9,16 @@ const htmlPlugin = new HtmlWebPackPlugin({
   filename: './index.html',
 })
 
+const html1Plugin = new HtmlWebPackPlugin({
+  template: path.resolve(__dirname, 'app', 'app.html'),
+  filename: './app.html',
+})
+
+
 const copyPlugin = new CopyWebpackPlugin([
   {
-    from: path.resolve(__dirname, 'app', 'static'),
-    to: path.resolve(__dirname, 'public', 'static')
+    from: path.resolve(__dirname, 'app'),
+    to: path.resolve(__dirname, 'public')
   }
 ])
 
@@ -74,6 +80,7 @@ module.exports = {
   },
   plugins: [
     htmlPlugin,
+    html1Plugin,
     copyPlugin,
     cssExtractPlugin,
   ],
