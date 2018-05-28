@@ -1,19 +1,32 @@
 import React from 'react'
 import { render } from 'react-dom'
-import './index.scss';
-import App from './App';
+import { Provider } from 'react-redux'
+import { CookiesProvider } from 'react-cookie'
+import App from './App'
+import configureStore from './store/configureStore'
+import './index.scss'
+
 // import registerServiceWorker from './registerServiceWorker';
+const store = configureStore()
 const rootEl = document.getElementById('app')
 
 const renderApp = (Component) => {
-  console.log('KKKKKKKKKKKKKKKKKKKKKKK', Component, document.getElementById('app'));
   render(
-    <Component />
+    <Provider store={store}>
+      <CookiesProvider>
+        <Component />
+      </CookiesProvider>
+    </Provider >
     ,
     rootEl
   )
 }
 
 renderApp(App)
-// ReactDOM.render(<App />, document.getElementById('app'));
-// registerServiceWorker();
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    const NextRoot = require('./App').default // eslint-disable-line global-require
+    renderApp(NextRoot)
+  })
+}
