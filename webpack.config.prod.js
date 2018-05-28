@@ -1,10 +1,8 @@
-const webpack = require('webpack')
+// const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
-
-const PORT = 8088
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: path.resolve(__dirname, 'app', 'index.html'),
@@ -13,8 +11,8 @@ const htmlPlugin = new HtmlWebPackPlugin({
 
 const copyPlugin = new CopyWebpackPlugin([
   {
-    from: path.resolve(__dirname, 'app'),
-    to: path.resolve(__dirname, 'dev')
+    from: path.resolve(__dirname, 'app', 'static'),
+    to: path.resolve(__dirname, 'public', 'static')
   }
 ])
 
@@ -30,11 +28,12 @@ module.exports = {
       'rxjs',
       'event-source-polyfill',
       './app/index.js',
+      './app/index.scss',
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'dev'),
-    filename: 'main.js'
+    path: path.resolve(__dirname, 'public'),
+    filename: 'main-[hash].js'
   },
   module: {
     rules: [
@@ -48,19 +47,14 @@ module.exports = {
       {
         test: /\.(sass|scss|css)/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              minimize: true,
             }
           },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            }
-          }
+          'sass-loader',
         ]
       },
       {
@@ -82,16 +76,5 @@ module.exports = {
     htmlPlugin,
     copyPlugin,
     cssExtractPlugin,
-    new webpack.HotModuleReplacementPlugin(),
   ],
-  devServer: {
-    port: PORT,
-    hot: true,
-    contentBase: './app',
-    historyApiFallback: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    }
-  }
 }
