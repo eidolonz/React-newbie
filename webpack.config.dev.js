@@ -12,8 +12,8 @@ const htmlPlugin = new HtmlWebPackPlugin({
 })
 
 const html1Plugin = new HtmlWebPackPlugin({
-  template: path.resolve(__dirname, 'app', 'index.html'),
-  filename: './index.html',
+  template: path.resolve(__dirname, 'app', 'app.html'),
+  filename: './app.html',
 })
 
 // const copyPlugin = new CopyWebpackPlugin([
