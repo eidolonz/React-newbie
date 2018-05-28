@@ -24,10 +24,6 @@ const copyPlugin = new CopyWebpackPlugin([
   {
     from: path.resolve(__dirname, 'app', 'asset'),
     to: path.resolve(__dirname, 'public', 'asset')
-  },
-  {
-    from: path.resolve(__dirname, 'app', 'bootstrap'),
-    to: path.resolve(__dirname, 'public', 'bootstrap')
   }
 ])
 
