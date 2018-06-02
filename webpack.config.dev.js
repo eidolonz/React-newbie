@@ -23,10 +23,10 @@ const html1Plugin = new HtmlWebPackPlugin({
 //   }
 // ])
 
-const cssExtractPlugin = new MiniCssExtractPlugin({
-  filename: '[name].css',
-  chunkFilename: '[id].css'
-})
+// const cssExtractPlugin = new MiniCssExtractPlugin({
+//   filename: '[name].css',
+//   chunkFilename: '[id].css'
+// })
 
 module.exports = {
   entry: {
@@ -35,6 +35,7 @@ module.exports = {
       'rxjs',
       'event-source-polyfill',
       './app/index.js',
+      './app/bootstrap/css/bootstrap.min.css',
     ],
   },
   output: {
@@ -87,7 +88,7 @@ module.exports = {
     htmlPlugin,
     html1Plugin,
     // copyPlugin,
-    cssExtractPlugin,
+    // cssExtractPlugin,
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
